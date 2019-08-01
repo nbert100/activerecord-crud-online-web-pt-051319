@@ -5,8 +5,6 @@
 #   movie = __                     #   movie = Movie.new
 # end                              # end
 
-require 'pry'
-
 def can_be_instantiated_and_then_saved
   movie = Movie.new
   movie.title = "This is a title."
@@ -37,8 +35,9 @@ def can_be_created_in_a_block(hash = {title: "Home Alone", release_date: 1990})
 end
 
 def can_get_the_first_item_in_the_database
-  Movie.title.first
-  binding.pry
+  Movie.title do |m|
+    m.title.first
+  end
 end
 
 def can_get_the_last_item_in_the_database
